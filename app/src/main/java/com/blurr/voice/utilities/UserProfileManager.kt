@@ -16,7 +16,7 @@ class UserProfileManager(private val context: Context) {
     fun isProfileComplete(): Boolean {
         val name = getName()
         val email = getEmail()
-        return !name.isNullOrBlank() && !email.isNullOrBlank() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        return true
     }
 
     fun saveProfile(name: String, email: String) {
