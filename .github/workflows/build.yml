@@ -1,0 +1,52 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Create google-services.json
+        run: |
+          cat > app/google-services.json << 'GSJSON'
+          {
+            "project_info": {
+              "project_number": "123456789",
+              "project_id": "tejas-ai",
+              "storage_bucket": "tejas-ai.appspot.com"
+            },
+            "client": [{
+              "client_info": {
+                "mobilesdk_app_id": "1:123456789:android:abcdef123456",
+                "android_client_info": {
+                  "package_name": "com.blurr.voice"
+                }
+              },
+              "api_key": [{"current_key": "fake_key"}],
+              "services": {}
+            }],
+            "configuration_version": "1"
+          }
+          GSJSON
+
+      - name: Build Debug APK
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: tejas-ai-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
