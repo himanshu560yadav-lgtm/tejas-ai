@@ -63,6 +63,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+        return
 
         signInButton = findViewById(R.id.googleSignInButton)
         // Customize Google Sign-In button appearance and text
