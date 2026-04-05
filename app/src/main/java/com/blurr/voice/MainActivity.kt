@@ -130,7 +130,7 @@ class MainActivity : BaseNavigationActivity() {
             return
         }
         onboardingManager = OnboardingManager(this)
-        if (!onboardingManager.isOnboardingCompleted()) {
+        if (false) {
             Logger.d("MainActivity", "User is logged in but onboarding not completed. Relaunching permissions stepper.")
             startActivity(Intent(this, OnboardingPermissionsActivity::class.java))
             finish()

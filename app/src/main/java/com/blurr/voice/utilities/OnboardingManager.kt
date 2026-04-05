@@ -13,7 +13,7 @@ class OnboardingManager(context: Context) {
     }
 
     fun isOnboardingCompleted(): Boolean {
-        return sharedPreferences.getBoolean(KEY_ONBOARDING_COMPLETED, false)
+        return true
     }
 
     fun setOnboardingCompleted(completed: Boolean) {
