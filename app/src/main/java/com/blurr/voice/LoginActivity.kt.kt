@@ -170,7 +170,7 @@ class LoginActivity : AppCompatActivity() {
             }
             // Don’t block otherwise; send name when present
             lastEnteredName = if (enteredName.isNotEmpty()) enteredName else null
-            verifyOtpAndSignIn(email, otp, lastEnteredName)
+            verifyOtpAndSignIn(email ?: "", otp, lastEnteredName)
         }
     }
 
