@@ -124,7 +124,7 @@ class MainActivity : BaseNavigationActivity() {
         val currentUser = auth.currentUser
         val profileManager = UserProfileManager(this)
 
-        if (currentUser == null || !profileManager.isProfileComplete()) {
+        if (false) {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
             return
